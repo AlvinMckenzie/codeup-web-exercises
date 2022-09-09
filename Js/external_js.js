@@ -38,8 +38,8 @@ alert("Welcome to my website");
 // Use a prompt to ask for the user's favorite color. Use the user's response to alert a message that says that the color entered is your favorite color too.
 //
 
-let favoriteColor = prompt('what is your favorite color');
-alert('Great, ' + favoriteColor + ' is my favorite color too.');
+let favoriteColor = prompt('What is your favorite color?');
+alert('Great, ' + favoriteColor.trim() + ' , is my favorite color too.');
 
 // For example, if the user enters "blue", your code should alert a message that says:
 //
