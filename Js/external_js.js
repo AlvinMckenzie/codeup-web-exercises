@@ -39,7 +39,7 @@ alert("Welcome to my website");
 //
 
 let favoriteColor = prompt('what is your favorite color');
-alert('Great, ' + favoriteColor + ' is my favorite color too.')
+alert('Great, ' + favoriteColor + ' is my favorite color too.');
 
 // For example, if the user enters "blue", your code should alert a message that says:
 //
@@ -56,39 +56,39 @@ let little =  parseInt(prompt("How many days will you rent LM?"));
 let brother = parseInt(prompt ('How many days will you rent Brother bear?'));
 let her = parseInt(prompt ("How many days will you rent Hercules?"));
 let price = 3
-let total = ((little + brother + her) * price)
+let total = ((little + brother + her) * price);
 
-alert('Your total will be ' + total  + ' thank you.')
+alert('Your total will be ' + total  + ' thank you.');
 
 
 //Suppose you're working as a contractor for 3 companies: Google, Amazon and Facebook, they pay you a different rate per hour. Google pays $400, Amazon $380, and Facebook $350. How much will you receive in payment for this week? You worked 10 hours for Facebook, 6 hours for Google and 4 hours for Amazon.
 
-let amazonHour = parseInt(prompt("How many hours did you work for Amazon?"))
-let faceHour = parseInt(prompt("How many hours did you work for Facebook?"))
-let googleHour = parseInt(prompt("How many hours did you work for Google?"))
+let amazonHour = parseInt(prompt("How many hours did you work for Amazon?"));
+let faceHour = parseInt(prompt("How many hours did you work for Facebook?"));
+let googleHour = parseInt(prompt("How many hours did you work for Google?"));
 
 let amazonPay = 380
 let googlePay = 400
 let facePay = 350
 
-let totalPay = (amazonPay * amazonHour) + (facePay * faceHour) + (googlePay * googleHour)
+let totalPay = (amazonPay * amazonHour) + (facePay * faceHour) + (googlePay * googleHour);
 
-alert('Your total pay for the is ' + totalPay + ('.'))
+alert('Your total pay for the is ' + totalPay + ('.'));
 
 //A student can be enrolled in a class only if the class is not full and the class schedule does not conflict with her current schedule.
 
 
-let openSeat = confirm('Is there an opening for the class?')
-let conflict = confirm('Does the class conflict with your schedule?')
+let openSeat = confirm('Is there an opening for the class?');
+let conflict = confirm('Does the class conflict with your schedule?');
 
-alert('It is ' + (openSeat && conflict) + (' you can join the class.'))
+alert('It is ' + (openSeat && conflict) + (' you can join the class.'));
 
 //A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
 
-let items = confirm('Are you buying more than two items?')
-let premium = confirm('Are you a premium member?')
-let offer = confirm('Did the offer expire?')
+let items = confirm('Are you buying more than two items?');
+let premium = confirm('Are you a premium member?');
+let offer = confirm('Did the offer expire?');
 
-alert('It is ' + (offer && (items || premium)) + ' the discount will aplly.')
+alert('It is ' + (offer && items) || (offer && premium) + ' the discount will aplly.');
 
 // Finally, commit the changes to your git repository, and push to GitHub.
