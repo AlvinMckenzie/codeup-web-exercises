@@ -52,7 +52,7 @@ alert('Great, ' + favoriteColor + ' is my favorite color too.');
 // When the exercise asks you to use a number, instead use a prompt to ask the user for that number.
 // Use an alert to show the results of each problem.
 //(You have rented some movies for your kids: The little mermaid (for 3 days), Brother Bear (for 5 days, they love it), and Hercules (1 day, you don't know yet if they're going to like it). If price for a movie per day is $3, how much will you have to pay?)
-let little =  parseInt(prompt("How many days will you rent LM?"));
+let little =  parseInt(prompt("How many days will you rent The little Mermaid?"));
 let brother = parseInt(prompt ('How many days will you rent Brother bear?'));
 let her = parseInt(prompt ("How many days will you rent Hercules?"));
 let price = 3
@@ -81,14 +81,14 @@ alert('Your total pay for the is ' + totalPay + ('.'));
 let openSeat = confirm('Is there an opening for the class?');
 let conflict = confirm('Does the class conflict with your schedule?');
 
-alert('It is ' + (openSeat && conflict) + (' you can join the class.'));
+alert('It is ' + (openSeat || conflict) + (' you can join the class.'));
 
 //A product offer can be applied only if a person buys more than 2 items, and the offer has not expired. Premium members do not need to buy a specific amount of products.
 
 let items = confirm('Are you buying more than two items?');
 let premium = confirm('Are you a premium member?');
-let offer = confirm('Did the offer expire?');
+let offer = confirm('Is the offer still valid?');
 
-alert('It is ' + (offer && items) || (offer && premium) + ' the discount will aplly.');
+alert('It is ' + ((offer && items) || (offer && premium)) + ' the discount will aplly.');
 
 // Finally, commit the changes to your git repository, and push to GitHub.
