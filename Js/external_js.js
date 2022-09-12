@@ -55,7 +55,7 @@ alert('Great, ' + favoriteColor.trim() + ' , is my favorite color too.');
 let little =  parseInt(prompt("How many days will you rent The little Mermaid?"));
 let brother = parseInt(prompt ('How many days will you rent Brother bear?'));
 let her = parseInt(prompt ("How many days will you rent Hercules?"));
-let price = 3
+let price = 3;
 let total = ((little + brother + her) * price);
 
 alert('Your total will be ' + total  + ' thank you.');
