@@ -11,9 +11,9 @@
 
 
 function sayHello(name){
-    return name;
+    return 'Hello ' + name;
 }
-console.log(sayHello('Hello codeup'))
+console.log(sayHello('codeup'));
 
 /**
  * TODO:
@@ -23,9 +23,7 @@ console.log(sayHello('Hello codeup'))
  * console.log 'helloMessage' to check your work
  */
 
-sayHello('Alvin')
-    let helloMessage = sayHello();
-
+    let helloMessage = sayHello('Alvin');
 
 console.log(helloMessage)
 
@@ -36,8 +34,8 @@ console.log(helloMessage)
  * console.
  */
 
-let myName = 'Alvin'
-console.log(sayHello(myName))
+let myName = 'Alvin';
+console.log(sayHello(myName));
 
 // Don't modify the following line, it generates a random number between 1 and 3
 // and stores it in a variable named random
@@ -65,7 +63,7 @@ function isTwo(x){
     return x;
 }
 
-console.log(isTwo(random))
+console.log(isTwo(random));
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -82,7 +80,7 @@ function calculateTip(num1, num2){
     return num1 * num2;
 }
 
-console.log(calculateTip(50, .5).toFixed(2))
+console.log(calculateTip(50, .5).toFixed(2));
 /**
  * TODO:
  * Use prompt and alert in combination with your calculateTip function to
@@ -90,9 +88,9 @@ console.log(calculateTip(50, .5).toFixed(2))
  * then display the dollar amount they should tip
  */
 
-let bill = prompt('How much is your bill total?')
-let tip = prompt('How would you like to tip?')
-alert('Your tip amount will be ' + calculateTip(bill, tip).toFixed(2) + '.')
+let bill = prompt('How much is your bill total?');
+let tip = prompt('How would you like to tip?');
+alert('Your tip amount will be ' + calculateTip(bill, tip).toFixed(2) + '.');
 
 
 /**
@@ -109,3 +107,9 @@ alert('Your tip amount will be ' + calculateTip(bill, tip).toFixed(2) + '.')
  *
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
+
+function applyDiscount(retail, disPercent){
+    return retail - (retail * disPercent);
+}
+
+console.log(applyDiscount(80, .25));
