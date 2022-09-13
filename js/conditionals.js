@@ -22,6 +22,18 @@
  * console.logging the function's return value
  */
 
+// function analyzeColor(colors){
+//      if (colors == 'blue'){
+//          alert('blue is the color of the sky!');
+//      } else if(colors == 'red'){
+//          alert('strawberries are red.');
+//      } else {
+//          alert('I dont know anything about ' + colors + '.');
+//      }
+//  }
+// analyzeColor('green');
+
+
 // Don't change the next two lines!
 // These lines create two variables for you:
 // - `colors`: a list of the colors of the rainbow
@@ -35,10 +47,30 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * You should see a different message every time you refresh the page
  */
 
+// analyzeColor(randomColor);
+// console.log(analyzeColor());
+
 /**
  * TODO:
  * Comment out the code above, and refactor your function to use a switch-case statement
  */
+
+function analyzeColor(colors){
+    switch(colors){
+    case 'blue':
+        alert('blue is the color of the sky.');
+        break;
+    case 'red':
+        alert('strawberries are red');
+        break;
+    default:
+        alert('I dont know anything about ' + colors + '.');
+        break;
+}}
+
+
+// analyzeColor('pink')
+
 
 /**
  * TODO:
@@ -46,6 +78,10 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * user to your `analyzeColor` function. Alert the return value from your
  * function to show it to the user.
  */
+
+let color = prompt('Whats your favorite color?')
+alert(analyzeColor(color))
+
 
 /* ########################################################################## */
 
@@ -68,6 +104,8 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  * Test your function by passing it various values and checking for the expected
  * return value.
  */
+
+
 
 /**
  * TODO:

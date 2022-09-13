@@ -23,9 +23,9 @@ console.log(sayHello('codeup'));
  * console.log 'helloMessage' to check your work
  */
 
-    let helloMessage = sayHello('Alvin');
+let helloMessage = sayHello('Alvin');
 
-console.log(helloMessage)
+console.log(helloMessage);
 
 /**
  * TODO:
