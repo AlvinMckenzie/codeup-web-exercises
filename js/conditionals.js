@@ -69,7 +69,7 @@ function analyzeColor(colors){
 }}
 
 
-// analyzeColor('pink')
+analyzeColor('pink')
 
 
 /**
@@ -80,7 +80,7 @@ function analyzeColor(colors){
  */
 
 let color = prompt('Whats your favorite color?')
-alert(analyzeColor(color))
+analyzeColor(color)
 
 
 /* ########################################################################## */
@@ -105,7 +105,31 @@ alert(analyzeColor(color))
  * return value.
  */
 
+function calculateTotal(num, amt) {
+    let val = 0;
+    switch (num) {
+        case 1:
+            val = 0.90 * amt;
+            break;
+        case 2:
+            val = 0.75 * amt;
+            break;
+        case 3:
+            val = 0.65 * amt;
+            break;
+        case 4:
+            val = 0.50 * amt;
+            break;
+        case 5:
+            val = 0;
+            break;
+        default:
+            val = amt;
+    }
+    return val.toFixed(2)
+}
 
+alert(calculateTotal(1, 100))
 
 /**
  * TODO:
@@ -116,7 +140,20 @@ alert(analyzeColor(color))
  * price before the discount was, and what their price after the discount is.
  */
 // Generate a random number between 0 and 6
-// var luckyNumber = Math.floor(Math.random() * 6);
+var luckyNumber = Math.floor(Math.random() * 6);
+
+let billTotal = prompt("What was your total bill?")
+
+calculateTotal(luckyNumber, +billTotal)
+
+
+
+alert('Your lucky number was ' + luckyNumber + '.');
+alert('Your bill before the discount was ' + billTotal + '.');
+alert('Your final total will be ' + calculateTotal(luckyNumber, +billTotal) + '.');
+
+
+
 
 /**
  * TODO:
@@ -136,3 +173,44 @@ alert(analyzeColor(color))
  * Can you refactor your code to use functions?
  * HINT: The way we prompt for a value could be improved
  */
+
+// let enterPrompt = confirm('Would you like to enter an number?')
+// if (enterPrompt === true) {
+//    let enterNum = prompt('Enter here:',0)
+//     enterNum = parseInt(enterNum)
+//     if (enterNum % 2 === 0) {
+//         alert('The number is even')
+//         alert(enterNum + 100)
+//         if (enterNum > 0) {
+//             alert('The number is positive')
+//         } else {
+//             alert('The number is negative.')
+//         }
+//     } else {
+//         alert('The number is odd.')
+//         alert(enterNum + 100)
+//         if (enterNum > 0) {
+//             alert('The number is positive')
+//         } else {
+//             alert('The number is negative.')
+//         }
+//     }
+// }
+
+
+let enterPrompt = confirm('Would you like to enter an number?')
+if (enterPrompt === true) {
+    let enterNum = prompt('Enter here:',0)
+    enterNum = parseInt(enterNum)
+ if(enterNum % 2 == 0){
+    alert('The number is even.');
+} else {
+    alert('the number is odd.');
+}
+if (enterNum){
+    alert(100 + enterNum);
+} if (enterNum > 0){
+    alert('The number is positive.');
+} else {
+    alert('The number is negative.');
+}}
