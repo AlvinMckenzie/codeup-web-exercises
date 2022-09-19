@@ -66,14 +66,25 @@
      *  > last([1, 2, 3, 4, 5]) // return 5
      */
 
-    let first = [1, 2, 3, 4, 5,]
-    console.log(first[0])
+    function first(array){
+        return array[0];
+    }
 
-    let second = [1, 2, 3, 4, 5]
-    console.log(second[1])
+    function second(array){
+        return array[1];
+    }
 
-    let last = [1, 2, 3, 4, 5]
-    console.log(last[4])
+    function last(array){
+        return array[array.length-1];
+    }
+
+    let numbers = [1, 2, 3, 4, 5]
+
+    console.log(first(numbers))
+
+    console.log(second(numbers))
+
+    console.log(last(numbers))
 
 
 })();
