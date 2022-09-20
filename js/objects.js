@@ -54,14 +54,17 @@
     ];
 
 
-
-if (shoppers.amount >= 200){
+for(let i = 0; i <= shoppers.length - 1; i++) {
+if (shoppers[i].amount >= 200){
      let discountPrice = .12;
-     let totalDiscount = shoppers.amount * discountPrice;
-     let total = shoppers.amount - (shoppers.amount* discountPrice);
-    console.log(shoppers[name])
+     let totalDiscount = shoppers[i].amount * discountPrice;
+     let total = shoppers[i].amount - (shoppers[i].amount* discountPrice);
+    console.log(shoppers[i].name + ' original price is: ' +  shoppers[i].amount +' the discount amount is: ' + totalDiscount + ' the total after the discount is: ' + total + '.' )
+}else {
+    console.log(shoppers[i].name + ' total price is: ' + shoppers[i].amount + ' did not spend enough for the discount.')
 }
-    console.log(shoppers[2])
+}
+
 
 
     /** TODO:
@@ -76,6 +79,50 @@ if (shoppers.amount >= 200){
      * > console.log(books[0].author.firstName) // "Douglas"
      * > console.log(books[0].author.lastName) // "Adams"
      */
+
+    let books =[
+        {
+        title: 'Dragon Master',
+        author: {
+            firstName: 'Tracey',
+            lastName: 'West'
+        }
+        },
+        {
+            title: 'Monsters and how to tame them',
+            author: {
+                firstName: 'Kevin',
+                lastName: 'Hart'
+            }
+        },
+        {
+            title: 'Arthur',
+            author: {
+                firstName: 'Marc',
+                lastName: 'Brown'
+            }
+        },
+        {
+            title: 'A song of ice and fire',
+            author: {
+                firstName: 'George R.R.',
+                lastName: 'Martin'
+            }
+        },
+        {
+            title: 'Feeding the Soul',
+            author: {
+                firstName: 'Tabitha',
+                lastName: 'Brown'
+            }
+        }
+    ]
+
+for (let i = 0; i <= books.length -1; i++){
+    console.log(books[i].title)
+    console.log(books[i].author.firstName)
+    console.log(books[i].author.lastName)
+}
 
     /**
      * TODO:
@@ -101,6 +148,12 @@ if (shoppers.amount >= 200){
      *      ---
      *      ...
      */
+
+    for (let i = 0; i <= books.length -1; i++){
+        console.log('Book # ' + (i + 1))
+        console.log('Tittle: ' + books[i].title)
+        console.log('Author: ' + books[i].author.firstName + ' ' + books[i].author.lastName)
+    }
 
     /**
      * Bonus:
