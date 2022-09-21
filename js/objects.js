@@ -153,6 +153,7 @@ for (let i = 0; i <= books.length -1; i++){
         console.log('Book # ' + (i + 1))
         console.log('Tittle: ' + books[i].title)
         console.log('Author: ' + books[i].author.firstName + ' ' + books[i].author.lastName)
+        console.log('---')
     }
 
     /**
