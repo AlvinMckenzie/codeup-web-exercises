@@ -13,8 +13,8 @@
      */
 
     let person = {};
-        person['firstName'] = 'Alvin'
-        person['lastName'] = 'Mckenzie'
+        person.firstName = 'Alvin'
+        person.lastName = 'Mckenzie'
     console.log(person.firstName)
     console.log(person.lastName)
 
@@ -32,6 +32,10 @@
     person['sayHello'] = 'Hello from ' + person.firstName + person.lastName + '!'
     console.log(person.sayHello)
 
+    person.sayHello = function (){
+        `Hello from ${this.firstName} ${this.lastName}`
+
+    }
 
     /** TODO:
      * HEB has an offer for the shoppers that buy products amounting to
@@ -55,17 +59,29 @@
 
 
 for(let i = 0; i <= shoppers.length - 1; i++) {
-if (shoppers[i].amount >= 200){
+    if (shoppers[i].amount >= 200){
      let discountPrice = .12;
      let totalDiscount = shoppers[i].amount * discountPrice;
      let total = shoppers[i].amount - (shoppers[i].amount* discountPrice);
     console.log(shoppers[i].name + ' original price is: ' +  shoppers[i].amount +' the discount amount is: ' + totalDiscount + ' the total after the discount is: ' + total + '.' )
-}else {
+    }else {
     console.log(shoppers[i].name + ' total price is: ' + shoppers[i].amount + ' did not spend enough for the discount.')
-}
+    }
 }
 
 
+    function offer(arrayOfShoppers){
+
+        arrayOfShoppers.forEach(function (shopper){
+            if (shopper.amount >= 200){
+                console.log(shoppers[i].name + ' original price is: ' +  shoppers[i].amount +' the discount amount is: ' + shoppers[i].amount - (shoppers[i].amount * .12) + ' the total after the discount is: ' + total + '.' )
+            }else {
+                console.log(shoppers[i].name + ' total price is: ' + shoppers[i].amount + ' did not spend enough for the discount.')
+            }}
+            )
+    }
+
+console.log(offer())
 
     /** TODO:
      * Create an array of objects that represent books and store it in a
