@@ -1,0 +1,12 @@
+.jumbotron{
+    display: flex;
+    background-image: url("/img/pizza.png");
+    height: 346px;
+    background-size: cover;
+    align-items: center;
+}
+
+.jumbotron>h1{
+    width: 100%;
+    text-align: center;
+}
