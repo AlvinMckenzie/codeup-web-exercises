@@ -1,5 +1,6 @@
 "use strict";
 
+//Selectors EX.
 
 // $('li').css('font-size', '20px')
 //
@@ -7,6 +8,7 @@
 //
 // alert($('h1').html())
 
+//Mouse Events EX.
 $(document).ready(function() {
 
     $('h1').click(function(e) {
