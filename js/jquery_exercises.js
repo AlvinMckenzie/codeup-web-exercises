@@ -1,5 +1,11 @@
 "use strict";
 
+// $(function that() {
+//     alert ('page has loaded')
+// });
+
+
+
 //Selectors EX.
 
 // $('li').css('font-size', '20px')
@@ -9,20 +15,16 @@
 // alert($('h1').html())
 
 //Mouse Events EX.
-$(document).ready(function() {
 
-    $('h1').click(function(e) {
-        $(e.target).css('background', 'blue');
-    });
-
-    $('p').dblclick(function(e) {
-        $(e.target).css('font-size', '18px');
-    });
-
-    $('li').hover(function(e) {
-        $(e.target).css('color', 'green');
-    }, function(e) {
-        $(e.target).css('color', 'black');
-    });
-
-});
+$('h1').click(function (e) {
+    $('h1').css('background-color', 'red')
+})
+$('p').dblclick(function (e) {
+    $('p').css('font-size', "18px")
+})
+$('li').hover(function () {
+        $('li').css('color', 'red')
+    }, function () {
+        $('li').css('color', 'black')
+    }
+)
