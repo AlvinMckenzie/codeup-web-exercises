@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Store</title>
+</head>
+<body>
+
+<h1>My Tool Store</h1>
+
+<table id="products">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Categories</th>
+        </tr>
+    </thead>
+    <tbody id="insertProducts"></tbody>
+</table>
+
+<input type="button" value="Inventory" onclick="javascript:getData()">
+
+<input type="button" value="Refresh" onclick="storeData()">
+
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+<script>
+function getData() {
+    "use strict";
+    // TODO: Create an AJAX GET request for the file under data/inventory.json
+
+    $.get('data/inventory.json').done(function (data) {
+        $('#insertProducts').empty();
+        console.log(data);
+        data.forEach(function (stock) {
+            let row = "";
+            row += '<tr>';
+            row += '<td>' + stock.title + '</td>';
+            row += '<td>' + stock.quantity + '</td>';
+            row += '<td>' + stock.price + '</td>';
+            row += '<td>' + stock.categories.join(',') + '</td>';
+            row += '</tr>';
+            $('#insertProducts').append(row)
+        })
+    })
+
+    // TODO: Take the data from inventory.json and append it to the products table
+    //       HINT: Your data should come back as a JSON object; use console.log() to inspect
+    //             its contents and fields
+    //       HINT: You will want to target #insertProducts for your new HTML elements
+};
+    function storeData() {
+        $.post('data/inventory.json',
+            {
+                "title": "Leaf Blower",
+                "quantity": 25,
+                "categories": [
+                    "tool", "outdoor"
+                ],
+                "price": 65
+            }
+        ).done(function () {
+            console.log('completed update')
+            getData()
+        })
+    }
+
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+</script>
+
+</body>
+</html>

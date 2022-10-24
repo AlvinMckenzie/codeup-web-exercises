@@ -7,9 +7,7 @@ $('dt').click(function (e) {
 });
 
 $('.factList').click(function () {
-
     $('h3').each(function(x, y) {
-
         $(y).next().children().last().css('background-color', 'yellow')
     })
 })
@@ -22,3 +20,4 @@ $('li').click(function () {
     $(this).parent().children().first().css('color', 'blue')
 
 })
+
