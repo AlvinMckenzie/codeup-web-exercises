@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapbox Map API</title>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+  <style>
+    #map{
+      width: 100%;
+      height: 500px;
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<script src="js/Api-keys.js"></script>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+<script>
+ let markerArr=[]
+  mapboxgl.accessToken = mapToken;
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v9',
+    zoom: 13,
+    center:[-95.40737, 30.11780]
+  });
+
+  //restaurant marker
+  let favoriteEateries = [
+          {
+    address: '26608 Keith St, Spring, TX 77373',
+    popupHTML:'<p>Cork Screw</p></p><p>Service options: Dine-in · No-contact delivery</p><p>26608 Keith St, Spring, TX 77373</p>'},
+    {
+      address: '1111 Timberloch Pl, The Woodlands, TX 77380',
+      popupHTML:'<p>Cork Screw</p></p><p>Service options: Dine-in · Curbside pickup </p><p>1111 Timberloch Pl, The Woodlands, TX 77380</p><p>Phone: (281) 362-1121</p>'},
+    {
+      address: ' 8366 Westheimer Rd, Houston, TX 77063',
+      popupHTML:'<p>Cork Screw</p></p><p>Service options: Dine-in · Curbside pickup · No-contact delivery </p><p> 8366 Westheimer Rd, Houston, TX 77063</p><p>Phone: (281) 974-1785</p>'
+  }]
+
+  function placeMarkerAndPopup(favoriteEateries, mapToken, map) {
+    favoriteEateries.forEach(x =>
+            geocode(x.address, mapToken).then(function(coordinates) {
+              var popup = new mapboxgl.Popup()
+                      .setHTML(x.popupHTML);
+
+              var marker = new mapboxgl.Marker()
+                      .setLngLat(coordinates)
+
+                      .addTo(map)
+                      .setPopup(popup);
+              popup.addTo(map);
+              marker.togglePopup()
+
+              markerArr.push(marker)
+            }
+            )
+    )
+  };
+  placeMarkerAndPopup(favoriteEateries, mapToken, map);
+
+
+</script>
+</body>
+</html>
