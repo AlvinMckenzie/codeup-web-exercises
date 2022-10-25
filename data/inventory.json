@@ -30,13 +30,5 @@
             "tool"
         ],
         "price": 10
-    },
-    {
-        "title": "Edger",
-        "quantity": 30,
-        "categories": [
-            "tool", "outdoor"
-        ],
-        "price": 85
     }
 ]

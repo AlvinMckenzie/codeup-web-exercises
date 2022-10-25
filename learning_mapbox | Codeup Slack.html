@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+    <style>
+        #map{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="js/mapbox-geocoder-utils.js"></script>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+<script>
+    const key ="pk.eyJ1IjoiYWx2aW5tY2tlbnppZSIsImEiOiJjbDluODV3MnMwMDBzM3lxdWN1Z2lld3pvIn0.ju-g_lwq5unZe1KE-O5gJA";
+
+    mapboxgl.accessToken = key;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        //TODO: Set your own zoom and center
+        zoom: 13,
+        center:[-95.40737, 30.11780]
+    });
+
+    //TODO: Set zoom on your own with a map.setZoom call in your console
+
+
+    //TODO: Add your own marker to where we've aligned your map so far
+
+    let marker = new mapboxgl.Marker()
+        .setLngLat([-95.40737, 30.11780])
+            .addTo(map)
+
+    let popup = new mapboxgl.Popup()
+        .setHTML('<p>Kroger</p>')
+        .setLngLat([-95.40737, 30.11780])
+        .addTo(map)
+
+    let popup2 = new mapboxgl.Popup()
+        .setHTML('<p>car wash</p>')
+        .setLngLat(result)
+        .addTo(map)
+
+    // .bounce2{
+    //     animation: bounce2 3s ease infinite;
+    // }
+    // @keyframe bounce2{
+    //     0%, 20%, 50%, 80% 100%{transform:translateY(0):}
+    //     40%{transform: translateY(-30px);}
+    //     60%{transform:translateY(-15px);}
+    // }
+
+    //TODO: Use the geocode method to add a 2nd marker and popup to your map, then center your map over it
+
+        geocode('3539 rayford rd', key).then(function (results){
+            console.log(results)
+        })
+
+    //TODO: Try a reverse geocode yourself and see what address you get back for your coordinates - remember to send up a {lng: <lng>, lat: <lat>} object
+</script>
+</body>
+</html>
