@@ -130,7 +130,7 @@ let count = 5;
             url: "http://api.openweathermap.org/data/2.5/forecast",
             type: "GET",
             data: {
-                APPID: OPEN_WEATHER_APPID,
+                APPID: weatherToken,
                 lat:    input.lat,
                 lon:   input.lng,
             }
@@ -146,11 +146,10 @@ let count = 5;
 
                     } else {
 
-
                         let html = "";
 
                         html += '<div class="col card-header"><p class="mb-4 card-header">' + x.dt_txt.split(' ')[0] + "</p>";
-                        html += '<p class="mb-2">' + fahrenheit(x.main.temp_min) + '˚F' + ' / ' + fahrenheit(x.main.temp_max) + '˚F' + '</p>';
+                        html += '<p class="mb-2">' + (x.main.temp_min) + '˚F' + ' / ' + (x.main.temp_max) + '˚F' + '</p>';
                         html += '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
                         html += '<p class="mb-2">' + 'Desciption: ' + "<strong>" + x.weather[0].description + "</strong>" + '</p>';
                         html += '<p class="mb-2">' + 'Humdidity: ' + x.main.humidity + '</p>';
@@ -164,8 +163,6 @@ let count = 5;
                 }
             })
         });
-
-
     }
 
 
