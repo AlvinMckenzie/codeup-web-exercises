@@ -10,7 +10,12 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
 
+
+
     <style>
+        .body{
+            background-image: url("img/Gcskyline.webp");
+        }
         #map {
             width: 100%;
             height: 500px;
@@ -24,29 +29,37 @@
             top: 0;
             overflow: hidden;
             z-index: 100;
-        }
-
-        #searchBar {
+            background-color: #282e3c;
         }
 
         #weatherData{
             margin-top: 75px;
-            background-color: lightgray;
+            background-color: #505c7c;
+            padding: 5px;
+            margin-right: 3px;
+            margin-left: 3px;
         }
 
         #search {
-            background-color: black;
+            background-color: #282e3c;
         }
 
+        #cardHeader{
+            background-color: #988829;
+            width: 100%;
+        }
 
+        .Clouds {
+            color: red;
+        }
 
     </style>
 
 </head>
-<body>
+<body class="body">
 
 
-<nav class="navbar bg-dark" id="navbar">
+<nav class="navbar" id="navbar">
     <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">
             <img src="img/snowflake_weather_app_icon_4x.webp" alt="Logo" width="35" height="30"
@@ -82,176 +95,35 @@
 
 <script>
 
-    let markerArr = []
-    mapboxgl.accessToken = mapToken;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10',
-        zoom: 13,
-        center:[-95.40737, 30.11780]
-    });
-
-    let count = 5;
-
-    $.ajax({
-        url: "http://api.openweathermap.org/data/2.5/forecast",
-        type: "GET",
-        data: {
-            APPID: weatherToken,
-            lat: 30.11780,
-            lon: -95.40737,
-            units: 'imperial'
-        }
-    }).done(function (data) {
-        // console.log(data)
-        // console.log(data.list[0].dt_txt.split(' ')[0])
-        // console.log(data.list[0].main. temp_max);
-        // console.log(data.list[0].main.temp_min);
-        // console.log(data.list[0].weather[0].icon);
-        // console.log(data.list[0].weather[0].description);
-        // console.log(data.list[0].main.humidity);
-        // console.log(data.list[0].wind.speed);
-        // console.log(data.list[0].main.pressure);
-
-        //
-        data.list.forEach(function (x) {
-            if ((x.dt_txt.split(' ')[1] === '00:00:00') && (count > 0)) {
-                // console.log(x.dt_txt.split(' ')[0])
-                // console.log(x.main.temp_max);
-                // console.log(x.main.temp_min);
-                // console.log(x.weather[0].icon);
-                // console.log(x.weather[0].description);
-                // console.log(x.main.humidity);
-                // console.log(x.wind.speed);
-                // console.log(x.main.pressure);
-                // console.log(x)
-
-                let html = '';
-                html += '<div class="col card" id="weatherData"><p class="mb-4 card-header text-nowrap">' + x.dt_txt.split(' ')[0] + "</p>";
-                html += '<p class="mb-2">' + (x.main.temp_min) + '˚F' + ' / ' + (x.main.temp_max) + '˚F' + '</p>';
-                html += '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
-                html += '<p class="mb-2">' + 'Desciption: ' + "<strong>" + x.weather[0].description + "</strong>" + '</p>';
-                html += '<p class="mb-2">' + 'Humdidity: ' + x.main.humidity + '</p>';
-                html += '<p class="mb-2"> ' + 'Wind: ' + x.wind.speed + '</p>';
-                html += '<p>' + 'Pressure: ' + x.main.pressure + '</p>'
-                html += '</div>';
-
-                $('.row').append(html);
-
-                count--
-
-
-            }
-        })
-    })
-
-    //Marker and Add marker function
-    this.marker = new mapboxgl.Marker();
-    this.map.on('click', this.addMarker.bind(this),
-    );
-
-    function addMarker(event) {
-
-        var input = event.lngLat;
-
-        this.marker.setLngLat(input).addTo(this.map);
-        console.log(input);
-
-
-        let count = 5;
-        $.ajax({
-            url: "http://api.openweathermap.org/data/2.5/forecast",
-            type: "GET",
-            data: {
-                APPID: weatherToken,
-                lat: input.lat,
-                lon: input.lng,
-                units: 'imperial'
-            }
-        }).done(function (data) {
-            // console.log(data)
-            $('#location').empty()
-            let para = "";
-            para += '<h3>' + data.city.name + ", " + data.city.country + '</h3>';
-            $('#location').append(para)
-            $('.row').empty()
-            data.list.forEach(x => {
-                if ((x.dt_txt.split(' ')[1] === '00:00:00') && (count > 0)) {
-
-                    let html = "";
-
-                    html += '<div class="col col-s-2 card" id="weatherData"><p class="mb-4 card-header text-nowrap">' + x.dt_txt.split(' ')[0] + "</p>";
-                    html += '<p class="mb-2">' + x.main.temp_min + 'F' + ' / ' + x.main.temp_max + 'F' + '</p>';
-                    html += '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
-                    html += '<p class="mb-2">' + 'Desciption: ' + "<strong>" + x.weather[0].description + "</strong>" + '</p>';
-                    html += '<p class="mb-2">' + 'Humdidity: ' + x.main.humidity + '</p>';
-                    html += '<p class="mb-2"> ' + 'Wind: ' + x.wind.speed + '</p>';
-                    html += '<p>' + 'Pressure: ' + x.main.pressure + '</p>'
-                    html += '</div>';
-
-                    $('.row').append(html)
-                    count--
-                }
-            })
-        });
-    }
-
-
-    // Search bar event listener & search function
-    let searchBar = document.getElementById('search');
-    searchBar.addEventListener('click', searchLoc)
-
-    // let search = document.querySelector('searchbar');
-    // searchBar.addEventListener('keydown', searchLoc)
-
-    let search = document.querySelector('form');
-    search.addEventListener("keydown", function(e) {
-        if (e.keyCode === 13){
-            e.preventDefault()
-        }})
-
-
-    function searchLoc(e) {
-        e.preventDefault()
-        let input = document.getElementById('searchBar',).value;
-        console.log(input)
-        geocode(input, mapToken).then(function (coordinates) {
-            if (coordinates) {
-                var marker = new mapboxgl.Marker()
-                    .setLngLat(coordinates)
-                    .addTo(map)
-            }
-            map.flyTo({center: coordinates});
-
-
+    function createWeekWeather(lat, lon) {
             let count = 5;
             $.ajax({
                 url: "http://api.openweathermap.org/data/2.5/forecast",
                 type: "GET",
                 data: {
                     APPID: weatherToken,
-                    lat: coordinates[1],
-                    lon: coordinates[0],
+                    lat: lat,
+                    lon: lon,
                     units: 'imperial'
                 }
             }).done(function (data) {
-                // console.log(data)
-                // console.log(count);
 
                 $('#location').empty()
                 let para = "";
                 para += '<h3>' + data.city.name + ", " + data.city.country + '</h3>';
                 $('#location').append(para)
                 $('.row').empty()
-
+// console.log(data.list)
+                // var r = new Date()
+                // r.setDate(r.getDay() + 1)
+                // var t = data.list.filter(x => new Date(x.dt_txt).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})  === new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}))
+                // console.log(t)
                 data.list.forEach(x => {
                     if ((x.dt_txt.split(' ')[1] === '00:00:00') && (count > 0)) {
-
-                        // console.log(x)
-
+                        let clouds = ""
                         let html = "";
 
-                        html += '<div class="col card-header id="weatherData"><p class="mb-4 card-header text-nowrap">' + x.dt_txt.split(' ')[0] + "</p>";
+                        html += '<div class="col card-header card" id="weatherData"><p class="mb-4 card-header text-nowrap" id="cardHeader">' + x.dt_txt.split(' ')[0] + "</p>";
                         html += '<p class="mb-2">' + x.main.temp_min + 'F' + ' / ' + x.main.temp_max + 'F' + '</p>';
                         html += '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
                         html += '<p class="mb-2">' + 'Desciption: ' + "<strong>" + x.weather[0].description + "</strong>" + '</p>';
@@ -266,6 +138,60 @@
                     }
                 })
             });
+    }
+
+    let markerArr = []
+    mapboxgl.accessToken = mapToken;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        zoom: 13,
+        center:[-95.40737, 30.11780]
+    });
+    createWeekWeather(30.11780, -95.40737)
+
+    //Marker and Add marker function
+    this.marker = new mapboxgl.Marker();
+    this.map.on('click', this.addMarker.bind(this),
+    );
+
+    function addMarker(event) {
+
+        var input = event.lngLat;
+
+        this.marker.setLngLat(input).addTo(this.map);
+        console.log(input);
+
+        createWeekWeather(input.lat, input.lng)
+
+    }
+
+
+    // Search bar event listener & search function
+    let searchBar = document.getElementById('search');
+    searchBar.addEventListener('click', searchLoc)
+
+    let search = document.querySelector('form');
+    search.addEventListener("keydown", function(e) {
+        if (e.keyCode === 13){
+            e.preventDefault()
+        }})
+
+
+    //Search and Fly over Function
+    function searchLoc(e) {
+        e.preventDefault()
+        let input = document.getElementById('searchBar',).value;
+        console.log(input)
+        geocode(input, mapToken).then(function (coordinates) {
+            if (coordinates) {
+                var marker = new mapboxgl.Marker()
+                    .setLngLat(coordinates)
+                    .addTo(map)
+            }
+            map.flyTo({center: coordinates});
+
+            createWeekWeather(coordinates[1], coordinates[0])
 
         })
     }

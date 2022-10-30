@@ -248,7 +248,7 @@ let Qq3 = [[
 //
 
 
-function makeSandwhichObjects(arr1, arr2){
+function makeSandWhichObjects(arr1, arr2){
     let newSandwich = [];
     for (let i = 0; i < arr.length; i++){
         newSandwich.push({
@@ -259,7 +259,7 @@ function makeSandwhichObjects(arr1, arr2){
     return newSandwich
 }
 
-console.log(makeSandwhichObjects(breads, fillings));
+console.log(makeSandWhichObjects(breads, fillings));
 
 //     ```
 //
@@ -367,7 +367,7 @@ let newArr = [
 ]
 function getBudget(arr) {
     let sum = 0;
-    for (i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         sum += arr[i].budget
     }
     return sum
@@ -411,7 +411,7 @@ let yourPets = [
 ]
 function totalPets(arr) {
     let sum = 0;
-    for (i = 0; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         sum += arr[i].pets
     }
     return sum
@@ -473,3 +473,8 @@ console.log(totalPets(yourPets));
  *       {name: 'Kenneth Howell', pets: 2}
  *    ]) ➞ 11
  */
+
+// sort two digit numbers
+numbers.sort((a,b)=>a-b);
+
+
