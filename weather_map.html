@@ -10,7 +10,7 @@
 
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
 
-
+    <link href="css/weather_map.css" rel="stylesheet">
 
     <style>
         .body{
@@ -95,6 +95,77 @@
 
 <script>
 
+    function weatherAnimation (weatherConditions) {
+        let html = ""
+        switch (weatherConditions) {
+            case 'Rain':
+                html = '<div class="icon">\n' +
+                    '  <div id="rain">\n' +
+                    '    <div class="cloud">\n' +
+                    '      <div class="drops"></div>\n' +
+                    '      <div class="drops-rain"></div>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>'
+                break;
+
+            case'Drizzle':
+                html = '<div class="icon">\n' +
+                    '  <div id="drizzle">\n' +
+                    '    <div class="cloud">\n' +
+                    '      <div class="drops"></div>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>'
+
+            case 'Thunderstorm':
+                html = '<div class="icon">\n' +
+                    '  <div id="thunderstorm">\n' +
+                    '    <div class="cloud cloud-storm">\n' +
+                    '      <div class="thunderbolt"></div>\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '  <div class="cloud cloud-grey">\n' +
+                    '  </div>\n' +
+                    '</div>'
+
+            case 'Snow':
+                    html = '<div class="icon">\n' +
+                        '  <div id="snow">\n' +
+                        '    <div class="cloud">\n' +
+                        '      <div class="snowflakes">❄</div>\n' +
+                        '    </div>\n' +
+                        '  </div>\n' +
+                        '</div>'
+                break;
+
+            case 'Clouds':
+                html = '<div class="icon">\n' +
+                    '  <div id="clouds">\n' +
+                    '    <div class="cloud">\n' +
+                    '    </div>\n' +
+                    '    <div class="cloud cloud-grey">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>'
+                break;
+
+            case 'Clear':
+                html = '<div class="icon">\n' +
+                    '  <div id="clear">\n' +
+                    '    <div class="sun">\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>'
+
+            default:
+                html = '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
+        }
+        return html
+    }
+
+
+
     function createWeekWeather(lat, lon) {
             let count = 5;
             $.ajax({
@@ -113,25 +184,23 @@
                 para += '<h3>' + data.city.name + ", " + data.city.country + '</h3>';
                 $('#location').append(para)
                 $('.row').empty()
-// console.log(data.list)
-                // var r = new Date()
-                // r.setDate(r.getDay() + 1)
-                // var t = data.list.filter(x => new Date(x.dt_txt).toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"})  === new Date().toLocaleDateString('en-us', { year:"numeric", month:"short", day:"numeric"}))
-                // console.log(t)
+
+
                 data.list.forEach(x => {
                     if ((x.dt_txt.split(' ')[1] === '00:00:00') && (count > 0)) {
                         let clouds = ""
                         let html = "";
+                        console.log(x.weather[0].description);
 
                         html += '<div class="col card-header card" id="weatherData"><p class="mb-4 card-header text-nowrap" id="cardHeader">' + x.dt_txt.split(' ')[0] + "</p>";
                         html += '<p class="mb-2">' + x.main.temp_min + 'F' + ' / ' + x.main.temp_max + 'F' + '</p>';
-                        html += '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
+                        html += weatherAnimation(x.weather[0].main)
                         html += '<p class="mb-2">' + 'Desciption: ' + "<strong>" + x.weather[0].description + "</strong>" + '</p>';
                         html += '<p class="mb-2">' + 'Humdidity: ' + x.main.humidity + '</p>';
                         html += '<p class="mb-2"> ' + 'Wind: ' + x.wind.speed + '</p>';
                         html += '<p>' + 'Pressure: ' + x.main.pressure + '</p>'
                         html += '</div>';
-                        console.log(html);
+                        // console.log(html);
 
                         $('.row').append(html)
                         count--
