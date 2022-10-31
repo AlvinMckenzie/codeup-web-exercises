@@ -58,11 +58,10 @@
 </head>
 <body class="body">
 
-
 <nav class="navbar" id="navbar">
     <div class="container-fluid">
         <a class="navbar-brand text-light" href="#">
-            <img src="img/snowflake_weather_app_icon_4x.webp" alt="Logo" width="35" height="30"
+            <img src="img/batman_630.jpg.webp" alt="Logo" width="35" height="30"
                  class="d-inline-block align-text-top">
             Weather App
         </a>
@@ -164,8 +163,6 @@
         return html
     }
 
-
-
     function createWeekWeather(lat, lon) {
             let count = 5;
             $.ajax({
@@ -200,7 +197,6 @@
                         html += '<p class="mb-2"> ' + 'Wind: ' + x.wind.speed + '</p>';
                         html += '<p>' + 'Pressure: ' + x.main.pressure + '</p>'
                         html += '</div>';
-                        // console.log(html);
 
                         $('.row').append(html)
                         count--
@@ -235,7 +231,6 @@
 
     }
 
-
     // Search bar event listener & search function
     let searchBar = document.getElementById('search');
     searchBar.addEventListener('click', searchLoc)
@@ -245,7 +240,6 @@
         if (e.keyCode === 13){
             e.preventDefault()
         }})
-
 
     //Search and Fly over Function
     function searchLoc(e) {
@@ -265,9 +259,7 @@
         })
     }
 
-
 </script>
-
 
 </body>
 </html>
