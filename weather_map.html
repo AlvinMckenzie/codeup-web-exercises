@@ -116,6 +116,7 @@
                     '    </div>\n' +
                     '  </div>\n' +
                     '</div>'
+                break;
 
             case 'Thunderstorm':
                 html = '<div class="icon">\n' +
@@ -127,6 +128,7 @@
                     '  <div class="cloud cloud-grey">\n' +
                     '  </div>\n' +
                     '</div>'
+                break;
 
             case 'Snow':
                     html = '<div class="icon">\n' +
@@ -156,6 +158,7 @@
                     '    </div>\n' +
                     '  </div>\n' +
                     '</div>'
+                break;
 
             default:
                 html = '<img src="http://openweathermap.org/img/w/' + x.weather[0].icon + '.png">'
@@ -200,6 +203,8 @@
 
                         $('.row').append(html)
                         count--
+                        console.log(html);
+                        console.log(count);
                     }
                 })
             });
