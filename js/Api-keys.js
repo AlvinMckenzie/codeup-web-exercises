@@ -4,3 +4,5 @@ const mapToken = 'pk.eyJ1IjoiYWx2aW5tY2tlbnppZSIsImEiOiJjbDluODV3MnMwMDBzM3lxdWN
 //weather Map
 const weatherToken = '4f6e293822acbfeedf9533514416ec0d'
 
+//git API
+const gitApi = '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'
